@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98d17a2a-5ca9-4c61-8449-9ab575960054">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     aset.`id_aset` AS aset_id_aset,
+     aset.`nama` AS aset_nama,
+     aset.`jumlah` AS aset_jumlah,
+     aset.`nilai` AS aset_nilai,
+     aset.`kondisi` AS aset_kondisi
+FROM
+     `aset` aset]]>
+	</queryString>
+	<field name="aset_nama" class="java.lang.String"/>
+	<field name="aset_jumlah" class="java.lang.Integer"/>
+	<field name="aset_nilai" class="java.lang.Integer"/>
+	<field name="aset_kondisi" class="java.lang.String"/>
+	<group name="aset_nama">
+		<groupExpression><![CDATA[$F{aset_nama}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="64fde25d-336a-42e6-bfd6-112f1411970c"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[aset_nama]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="d2f59d58-f4ef-4efb-9282-8e46f4bc981f"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aset_nama}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="19f7ae57-5b19-40fb-a267-4e06ad0cd84b"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="aset_jumlah">
+		<groupExpression><![CDATA[$F{aset_jumlah}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="e7969eff-15a7-4cab-8afe-32f3961b1edd"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aset_jumlah}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="82f9b48e-f1f8-40e8-b355-0251fb7560d3"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[aset_jumlah]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="aset_nilai">
+		<groupExpression><![CDATA[$F{aset_nilai}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="c5aedbac-0b17-4b9d-aeac-e9b5c630df32"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aset_nilai}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="3366a242-9d4a-4132-9dba-00d7a58243a1"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[aset_nilai]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="aset_kondisi">
+		<groupExpression><![CDATA[$F{aset_kondisi}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="fef36258-188b-408d-82d5-6f715675e758"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{aset_kondisi}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="cb966f16-3dbb-4f83-8041-ccc47318468b"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[aset_kondisi]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="eb203914-aef3-4f2b-928e-8a1af4a28151"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="36eff498-333f-410e-a98a-eac030818ce5"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="9ab8a16a-aaef-4658-8992-c1aaeed2c342"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="1fc4d73e-2c3f-4675-ad1a-b0890c3e9b60"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="31354f88-6ad7-4d27-81ef-9f045a78fcf0"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="4101b174-7912-4a63-8b6a-051649d4a6e9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="1c7ee1e1-3744-4f45-9334-b1aeffc7606f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="505db27d-9acb-46e8-afc2-24ec75db6596"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
