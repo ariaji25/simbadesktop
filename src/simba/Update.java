@@ -21,14 +21,30 @@ public class Update extends javax.swing.JFrame {
     /**
      * Creates new form Insert
      */
-    public Update() {
+    public Update(Aset u) {
         initComponents();
-        u = new Aset();
+        database = new Database();
+        this.u = u;
+        int ids = Integer.parseInt(u.id);
+        try{
+            String sql2 = "SELECT * FROM aset WHERE id_aset=?";
+            PreparedStatement ps = database.conn.prepareStatement(sql2);
+            ps.setInt(1, ids);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                this.u.setNama(rs.getString("nama"));
+                this.u.setJml(Integer.toString(rs.getInt("jumlah")));
+                this.u.setNilai(Integer.toString(rs.getInt("nilai")));
+                this.u.setKondisi(rs.getString("kondisi"));
+            }     
+        }catch (Exception e){
+            
+        }
         setLocationRelativeTo(null);
-        tfnama.setText(u.nama);
-        tfjumlah.setText(Integer.toString(u.jml));
-        tfnilai.setText(Integer.toString(u.ni));
-        tfkondisi.setText(u.kon);
+        tfnama.setText(u.getNama());
+        tfjumlah.setText(u.getJml());
+        tfnilai.setText(u.getNilai());
+        tfkondisi.setText(u.getKondisi());
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 //        Date date = new Date();
 //        tftgl.setText(dateFormat.format(date));
@@ -58,100 +74,132 @@ public class Update extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        lsubmit = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
         tfnama = new javax.swing.JTextField();
         tfjumlah = new javax.swing.JTextField();
         tfnilai = new javax.swing.JTextField();
         tfkondisi = new javax.swing.JTextField();
-        background = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans Light", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nama");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(30, 60, 35, 17);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans Light", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Jumlah");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 100, 50, 17);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans Light", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nilai");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 140, 28, 17);
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans Light", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Kondisi");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 190, 46, 17);
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("DejaVu Sans Light", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Update");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(320, 20, 60, 20);
-
-        lsubmit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lsubmit.setText("Submit");
-        lsubmit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lsubmit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lsubmitMouseClicked(evt);
-            }
-        });
-        jPanel1.add(lsubmit);
-        lsubmit.setBounds(299, 265, 70, 20);
-
-        back.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        back.setText("Kembali");
-        back.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        jPanel1.add(back);
-        back.setBounds(30, 270, 60, 23);
 
         tfnama.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jPanel1.add(tfnama);
-        tfnama.setBounds(130, 60, 250, 20);
 
         tfjumlah.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jPanel1.add(tfjumlah);
-        tfjumlah.setBounds(130, 100, 250, 20);
 
         tfnilai.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jPanel1.add(tfnilai);
-        tfnilai.setBounds(130, 140, 250, 20);
 
         tfkondisi.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jPanel1.add(tfkondisi);
-        tfkondisi.setBounds(130, 190, 250, 20);
-        jPanel1.add(background);
-        background.setBounds(0, 0, 400, 320);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("SIMPAN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
+        jButton2.setText("KEMBALI");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(tfnama, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(tfjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfnilai, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton1))
+                        .addComponent(tfkondisi, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfnilai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfkondisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lsubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lsubmitMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
+         try {
             System.err.println(u.id);
             String sql = "UPDATE aset SET nama='"+tfnama.getText()+"',jumlah='"+Integer.parseInt(tfjumlah.getText())+"',nilai='"+Integer.parseInt(tfnilai.getText())+"',kondisi='"+tfkondisi.getText()+"' WHERE id_aset='"+u.id+"'";
             PreparedStatement pst;
@@ -159,17 +207,19 @@ public class Update extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Update Berhasil");
             this.dispose();
-            new Aset().setVisible(true);
+            HOME home = new HOME();
+            home.setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Terjadi Kesalahan here");
         }
-    }//GEN-LAST:event_lsubmitMouseClicked
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new Aset().setVisible(true);
-    }//GEN-LAST:event_backMouseClicked
+         HOME home = new HOME();
+         home.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,15 +227,14 @@ public class Update extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel back;
-    private javax.swing.JLabel background;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lsubmit;
     private javax.swing.JTextField tfjumlah;
     private javax.swing.JTextField tfkondisi;
     private javax.swing.JTextField tfnama;

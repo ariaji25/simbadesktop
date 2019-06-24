@@ -43,7 +43,6 @@ public class AsetKeluar extends javax.swing.JFrame {
                     rs.getInt("jumlah"),
                     rs.getInt("nilai"),
                     rs.getString("kondisi"),
-                    
                 };
                 model.addRow(o); 
             }     
@@ -230,10 +229,10 @@ public class AsetKeluar extends javax.swing.JFrame {
             PreparedStatement pst;
             pst = database.conn.prepareStatement(sql);
             
-            pst.setInt(1, Integer.parseInt(a.id));
-            pst.setString(2, a.nama);
-            pst.setInt(3, Integer.parseInt(a.jml));
-            pst.setInt(4, Integer.parseInt(a.ni));
+//            pst.setInt(1, Integer.parseInt(a.id));
+//            pst.setString(2, a.nama);
+//            pst.setInt(3, Integer.parseInt(a.jml));
+//            pst.setInt(4, Integer.parseInt(a.ni));
             
             
             pst.executeUpdate();

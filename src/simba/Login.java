@@ -12,15 +12,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+//import javazoom.jl.decoder.JavaLayerException;
+//import javazoom.jl.player.Player;
 
 
 public class Login extends javax.swing.JFrame {
     public static Login login;
     public Database database;
     public Home home;
-    public Player ply;
+//    public Player ply;
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -48,28 +48,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Belum Terkoneksi Database");
         }    
     }
-    private static void soundClick() throws JavaLayerException{
-        try{
-            String path=null;
-            path = System.getProperty("user.dir")+"/src/simba/click.mp3";
-            FileInputStream fis = new FileInputStream(path);
-            
-            Player ply = new Player(fis);
-            ply.play();
-            new Thread(){
-                @Override
-                public void run() {
-                    try {
-                        ply.play();//To change body of generated methods, choose Tools | Templates.
-                    } catch (JavaLayerException ex) {
-                    }
-                } 
-            }.start();
-        }catch(FileNotFoundException e){
-            
-        }
-         
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
